@@ -7,37 +7,40 @@
 <html>
 
 <head>
-    <title>UT Austin Website Tweaks</title>
-    <style>
-        body {
-            font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-            font-size: 100%;
-        }
-        .button {
-            font-size: 14px;
-            width: 100px;
-            color: #fff;
-            background-color: #00addc;
-            border: 2px solid #00addc;
-            border-radius: 3px;
-            cursor: pointer;
-            text-align: center;
-        }
-    </style>
+  <title>UT Austin Website Tweaks</title>
+  <style>
+    body {
+      font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+      font-size: 100%;
+    }
+
+    .title {
+      white-space: nowrap;
+    }
+
+    button {
+      font-size: 14px;
+      width: 100px;
+      color: #fff;
+      background-color: #00addc;
+      border: 2px solid #00addc;
+      border-radius: 3px;
+      cursor: pointer;
+      text-align: center;
+    }
+  </style>
+  <script type="text/javascript" src="addClass.js"></script>
 </head>
 
 <body>
-    <p id="title">UT Austin Website Tweaks</p>
-    <div id="panes">
-        <div class="buttons">
-            <p class="button" onclick="chrome.tabs.executeScript(null, {file: "addClass.js"});">Add Current Class</p>
-        </div>
-        <div id="classes">
-
-        </div>
+  <p class="title">UT Austin Website Tweaks</p>
+  <div id="panes">
+    <div class="buttons">
+      <button id="add-class">Add Current Class</button>
     </div>
-    <div id="status"></div>
-    <img id="image-result" hidden>
+    <div id="classes">
+    </div>
+  </div>
 </body>
 
 </html>

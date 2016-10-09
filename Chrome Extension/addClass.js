@@ -10,3 +10,11 @@ function addClass(){
   var element = document.getElementById("classes");
   element.appendChild(para)
 }
+
+function testAlert() {
+  alert('Test alert');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('add-class').addEventListener('click', addClass);
+})
