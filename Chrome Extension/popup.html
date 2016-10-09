@@ -1,0 +1,44 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+
+<head>
+    <title>UT Austin Website Tweaks</title>
+    <style>
+        body {
+            font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+            font-size: 100%;
+        }
+        .button {
+            font-size: 14px;
+            width: 100px;
+            color: #fff;
+            background-color: #00addc;
+            border: 2px solid #00addc;
+            border-radius: 3px;
+            cursor: pointer;
+            text-align: center;
+        }
+    </style>
+    <script src="popup.js"></script>
+</head>
+
+<body>
+    <p id="title">UT Austin Website Tweaks</p>
+    <div id="panes">
+        <div class="buttons">
+            <p class="button" onclick="addClass()">Add Current Class</p>
+        </div>
+        <div id="classes">
+
+        </div>
+    </div>
+    <div id="status"></div>
+    <img id="image-result" hidden>
+</body>
+
+</html>
