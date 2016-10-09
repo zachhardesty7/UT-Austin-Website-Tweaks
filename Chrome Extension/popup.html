@@ -24,14 +24,13 @@
             text-align: center;
         }
     </style>
-    <script src="popup.js"></script>
 </head>
 
 <body>
     <p id="title">UT Austin Website Tweaks</p>
     <div id="panes">
         <div class="buttons">
-            <p class="button" onclick="addClass()">Add Current Class</p>
+            <p class="button" onclick="chrome.tabs.executeScript(null, {file: "addClass.js"});">Add Current Class</p>
         </div>
         <div id="classes">
 
