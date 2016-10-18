@@ -1,67 +1,54 @@
-// Inform the background page that
-// this tab should have a page-action
-chrome.runtime.sendMessage({
-  from:    'content',
-  subject: 'showPageAction'
-});
-
-// Listen for messages from the popup
-chrome.runtime.onMessage.addListener(function (msg, sender, response) {
-  // First, validate the message's structure
-  if ((msg.from === 'popup') && (msg.subject === 'DOMInfo')) {
-    // Collect the necessary data
-    // (For your specific requirements `document.querySelectorAll(...)`
-    //  should be equivalent to jquery's `$(...)`)
-    var domInfo = {
-      total:   document.querySelectorAll('*').length,
-      inputs:  document.querySelectorAll('input').length,
-      buttons: document.querySelectorAll('button').length
-    };
-
-    // Directly respond to the sender (popup),
-    // through the specified callback */
-    response(domInfo);
-  }
-});
-
-
-
-// // This helps avoid conflicts in case we inject
-// // this script on the same page multiple times
-// // without reloading.
-// var injected = injected || (function() {
+// var elements = document.getElementsByTagName('*');
+// var count = 0;
 //
-//   // An object that will contain the "methods"
-//   // we can use from our event script.
-//   var methods = {};
+// function tokeCounter(){
+//     for (var i = 0; i < elements.length; i++) {
+//         var element = elements[i];
 //
-//   // This method will eventually return
-//   // background colors from the current page.
-//   methods.getClassInfo = function() {
-//     var nodes = document.querySelectorAll('[data-th]');
-//     var info = {
-//       uniqueID: nodes.item(0),
-//       name: document.querySelector("#details h2"),
-//       time: nodes.item(2)
-//     };
-//     return Object.getOwnPropertyDescriptors(info);
-//   };
+//         for (var j = 0; j < element.childNodes.length; j++) {
+//             var node = element.childNodes[j];
 //
-//   // This tells the script to listen for
-//   // messages from our extension.
-//   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-//     var data = {};
-//     // If the method the extension has requested
-//     // exists, call it and assign its response
-//     // to data.
-//     if (methods.hasOwnProperty(request.method))
-//       data = methods[request.method]();
-//     // Send the response back to our extension.
-//     sendResponse({
-//       data: data
-//     });
-//     return true;
-//   });
+//             if (node.nodeType === 3) {
+//                 var text = node.nodeValue;
+//                 if(text == '420'){
+//                     count++;
+//                 }
 //
-//   return true;
-// })();
+//                 var replacedText = text.replace(/420/, '+1');
+//
+//                 if (replacedText !== text) {
+//                     element.replaceChild(document.createTextNode(replacedText), node);
+//                 }
+//             }
+//         }
+//     }
+// }
+//
+// tokeCounter();
+
+var classes = document.querySelectorAll("[data-th]");
+var uniqueID = classes.item(0); //.innerHTML
+var name = document.querySelector("#details h2")
+var time = classes.item(2);
+var text = {
+  uniqueID : uniqueID;
+  name : name;
+  time : time;
+}
+
+// function getClassInfo(){
+// }
+//
+// getClassInfo();
+
+chrome.runtime.onMessage.addListener(
+    function(message, sender, sendResponse) {
+        switch(message.type) {
+            case "getText":
+                sendResponse(text);
+                break;
+            default:
+                console.error("Unrecognised message: ", message);
+        }
+    }
+);
