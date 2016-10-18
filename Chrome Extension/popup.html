@@ -1,9 +1,28 @@
-<!doctype html>
-<!--
- This page is shown when the extension button is clicked, because the
- "browser_action" field in manifest.json contains the "default_popup" key with
- value "popup.html".
- -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="popup.js"></script>
+  </head>
+  <body>
+    <h3 style="font-weight:bold; text-align:center;">DOM Info</h3>
+    <table border="1" cellpadding="3" style="border-collapse:collapse;">
+      <tr>
+        <td nowrap>Total number of elements:</td>
+        <td align="right"><span id="total">N/A</span></td>
+      </tr>
+      <tr>
+        <td nowrap>Number of input elements:</td>
+        <td align="right"><span id="inputs">N/A</span></td>
+      </tr>
+      <tr>
+        <td nowrap>Number of button elements:</td>
+        <td align="right"><span id="buttons">N/A</span></td>
+      </tr>
+    </table>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -29,7 +48,7 @@
       text-align: center;
     }
   </style>
-  <script type="text/javascript" src="testAlert.js"></script>
+  <script type="text/javascript" src="popup.js"></script>
 </head>
 
 <body>
@@ -40,8 +59,11 @@
       <button id="add-class">Add Current Class</button>
     </div>
     <div id="classes">
+      <p id="total">Test</p>
+      <p id="inputs">Test</p>
+      <p id="buttons">Test</p>
     </div>
   </div>
 </body>
 
-</html>
+</html> -->
