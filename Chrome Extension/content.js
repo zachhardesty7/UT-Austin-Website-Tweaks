@@ -26,29 +26,31 @@
 //
 // tokeCounter();
 
-var classes = document.querySelectorAll("[data-th]");
-var uniqueID = classes.item(0); //.innerHTML
-var name = document.querySelector("#details h2")
-var time = classes.item(2);
-var text = {
-  uniqueID : uniqueID;
-  name : name;
-  time : time;
+collectClassInfo() {
+  var classes = document.querySelectorAll("[data-th]");
+  var uniqueID = classes.item(0).textContent; //.innerHTML
+  var name = document.querySelector("#details h2").textContent;
+  var time = classes.item(2).textContent;
+  var text = {
+    uniqueID : uniqueID;
+    name : name;
+    time : time;
+  }
+  var test1 = 69;
 }
 
-// function getClassInfo(){
-// }
-//
-// getClassInfo();
+collectClassInfo();
 
 chrome.runtime.onMessage.addListener(
     function(message, sender, sendResponse) {
         switch(message.type) {
             case "getText":
-                sendResponse(text);
+                // JSON.stringify(text);
+                sendResponse(test1);
                 break;
             default:
                 console.error("Unrecognised message: ", message);
         }
+        return true;
     }
 );
