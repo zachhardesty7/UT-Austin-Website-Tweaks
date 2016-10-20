@@ -1,22 +1,26 @@
 chrome.runtime.onMessage.addListener(
-    function(message, sender, sendResponse) {
-        if (message.type == 'getClass') {
-          sendResponse(output);
-        }
-        return true;
+  function(message, sender, sendResponse) {
+    if (message.type == 'getClass') {
+      sendResponse(output);
     }
+    return true;
+  }
 );
 
 function collectClassInfo() {
-  var classes = document.querySelectorAll("[data-th]");
-  var uniqueID = classes.item(0).textContent; //.innerHTML
-  var name = document.querySelector("#details h2").textContent;
-  var time = classes.item(2).textContent;
-  output = {
-    uniqueID : uniqueID,
-    name : name,
-    time : time
+  var classes  = document.querySelectorAll("[data-th]");
+  var name     = document.querySelector("#details h2").textContent;
+  var uniqueID = classes.item(0).textContent;
+  var day      = classes.item(1).textContent;
+  var hour     = classes.item(2).textContent;
+  output       = {
+    uniqueID: uniqueID,
+    name    : name,
+    day     : day,
+    hour    : hour
   }
+  // is the best way really to declare this variable
+  // globally? better to just call function? make function return output?
 }
 
 collectClassInfo();
