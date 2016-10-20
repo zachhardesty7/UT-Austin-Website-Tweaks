@@ -1,7 +1,7 @@
 chrome.runtime.onMessage.addListener(
     function(message, sender, sendResponse) {
         if (message.type == 'getClass') {
-          sendResponse(test1);
+          sendResponse(output);
         }
         return true;
     }
@@ -12,16 +12,16 @@ function collectClassInfo() {
   var uniqueID = classes.item(0).textContent; //.innerHTML
   var name = document.querySelector("#details h2").textContent;
   var time = classes.item(2).textContent;
-  var text = {
+  output = {
     uniqueID : uniqueID,
     name : name,
     time : time
   }
-  var test1 = 69;
-  return test1;
 }
 
-var test1 = "Test"
+collectClassInfo();
+
+
 
 // var elements = document.getElementsByTagName('*');
 // var count = 0;
