@@ -26,7 +26,6 @@ function collectClassInfo() {
 collectClassInfo();
 
 
-
 // var elements = document.getElementsByTagName('*');
 // var count = 0;
 //
