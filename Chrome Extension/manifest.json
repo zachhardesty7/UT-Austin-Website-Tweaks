@@ -21,6 +21,7 @@
         "all_frames": false*/
     }],
     "permissions": [
+        "storage",
         "activeTab",
         "tabs",
         "clipboardRead",
