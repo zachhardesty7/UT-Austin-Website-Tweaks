@@ -1,0 +1,120 @@
+/* --------------------------------------------------------------
+
+   print.css
+   * Gives you some sensible styles for printing pages.
+   * See Readme file in this directory for further instructions.
+
+   Some additions you'll want to make, customized to your markup:
+   #header, #footer, #navigation { display:none; }
+
+-------------------------------------------------------------- */
+
+body {
+  line-height: 1;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  color:#000;                               /* black */
+  background: none;
+  font-size: 10pt;
+}
+
+
+/* Layout
+-------------------------------------------------------------- */
+
+#pageTitle {
+    background:none;
+    padding:0;
+    margin:0;
+    float:none;
+}
+
+#pgTitle {
+    float:none;
+    width:100%;
+    padding:0;
+    margin:0;
+    line-height: 2em;
+}
+
+#utd_toppage {
+    padding:0;
+    margin:0;
+    position:inherit;
+    width:auto;
+}
+
+#navbarFloat, #navbar_bottom, #header, #utilities, #breadcrumbs, #customize, #navbar_ut_direct_logo,
+#site_map, #footer_bottom {
+    display:none;
+}
+
+#utd_container {
+  background: none;
+  float:none;
+  width:100%; 
+}
+
+hr {
+  background:#ccc;                          /* grey */
+  color:#ccc;                               /* grey */
+  width:100%;
+  height:.5px;
+  margin:.5em 0;
+  padding:0;
+  border:none;
+}
+hr.space {
+  background: #fff;                         /* white */
+  color: #fff;                              /* white */
+  visibility: hidden;
+}
+
+/* Table
+---------------------------------------------------------------*/
+table {
+  padding:.2em 0 0 0;
+
+}  
+
+/* Text
+-------------------------------------------------------------- */
+
+h1,h2,h3,h4,h5,h6 { font-family: "Helvetica Neue", Arial, "Lucida Grande", sans-serif; }
+code { font:.9em "Courier New", Monaco, Courier, monospace; }
+
+a img { border:none; }
+p img.top { margin-top: 0; }
+
+blockquote {
+  margin:1.5em;
+  padding:1em;
+  font-style:italic;
+  font-size:.9em;
+}
+
+.small  { font-size: .9em; }
+.large  { font-size: 1.1em; }
+.quiet  { color: #999; }                    /* grey */
+.hide   { display:none; }
+
+
+/* Links
+-------------------------------------------------------------- */
+
+a:link, a:visited {
+  background: transparent;
+  font-weight:700;
+  text-decoration: underline;
+}
+
+a:link:after, a:visited:after {
+  /*content: " ( attr(href) )"; */
+  font-size: 90%;
+}
+
+/* If you're having trouble printing relative links, uncomment and customize this:
+   (note: This is valid CSS3, but it still won't go through the W3C CSS Validator) */
+
+/* a[href^="/"]:after {
+  content: " (http://www.yourdomain.com" attr(href) ") ";
+} */
