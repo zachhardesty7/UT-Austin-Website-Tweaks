@@ -1,32 +1,29 @@
 chrome.runtime.onMessage.addListener(
   function(message, sender, sendResponse) {
     if (message.type == 'getCourse') {
-      sendResponse(courses);
+      collectCourseInfo();
+      sendResponse(courseOutput);
     }
     return true;
   }
 );
 
 function collectCourseInfo() {
-  var courseData  = document.querySelectorAll("[data-th]");
+  var rawCourseData  = document.querySelectorAll("[data-th]");
   var courseName     = document.querySelector("#details h2").textContent;
-  var courseUniqueID = rawClassData.item(0).textContent;
-  var courseDay      = rawClassData.item(1).textContent;
-  var courseTime     = rawClassData.item(2).textContent;
-  if (typeof courses === 'undefined') {
-    courses = [];
-  };
-  courses.push({
+  var courseUniqueID = rawCourseData.item(0).textContent;
+  var courseDay      = rawCourseData.item(1).textContent;
+  var courseTime     = rawCourseData.item(2).textContent;
+  courseOutput = {
     uniqueID: courseUniqueID,
-    name    : courseName,
-    day     : courseDay,
-    time    : courseTime
-  });
+    name : courseName,
+    day : courseDay,
+    time : courseTime
+  };
 
   // is the best way really to declare this variable
   // globally? better to just call function? make function return output?
-  // locally store variable
-  chrome.storage.local.set(courses);
-};
 
-collectCourseInfo();
+  // locally store variable
+  // chrome.storage.local.set(courses);
+};
