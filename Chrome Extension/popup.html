@@ -12,7 +12,8 @@
     }
     button {
       display: flex;
-      margin: auto;
+      margin: 10px auto;
+      padding: 5px;
       font-size: 14px;
       width: 100px;
       color: #fff;
@@ -22,8 +23,13 @@
       cursor: pointer;
       text-align: center;
     }
+    .icon-delete {
+      cursor: pointer;
+      float: right;
+    }
   </style>
   <script type="text/javascript" src="popup.js"></script>
+  <script src="https://use.fontawesome.com/0ef0ae1559.js"></script>
 </head>
 <body>
   <p class="title">UT Austin Website Tweaks</p>
@@ -32,8 +38,7 @@
       <button id="add-course">Add Current Class</button>
       <button id="clear-courses">Clear All Classes</button>
     </div>
-    <div id="courses">
-    </div>
+    <div id="courses"></div>
   </div>
 </body>
 

@@ -23,7 +23,4 @@ function collectCourseInfo() {
 
   // is the best way really to declare this variable
   // globally? better to just call function? make function return output?
-
-  // locally store variable
-  // chrome.storage.local.set(courses);
 };

@@ -3,7 +3,7 @@
 
     "name": "UT Austin Website Tweaks",
     "description": "This extension helps you register for classes more easily and more coming soon(TM).",
-    "version": "0.3",
+    "version": "0.4",
 
     "background": {
         "scripts": ["background.js"],
@@ -28,5 +28,6 @@
         "clipboardWrite",
         "*://*/",
         "<all_urls>"
-    ]
+    ],
+    "content_security_policy": "script-src 'self' https://use.fontawesome.com/0ef0ae1559.js; object-src 'self'"
 }
