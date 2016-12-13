@@ -17,8 +17,10 @@ function collectCourseInfo() {
   let courseRoom       = rawCourseData[3].textContent;
   let courseInstructor = rawCourseData[4].textContent;
   let courseStatus     = rawCourseData[5].textContent;
-  // TODO: parse to remove wasted space / convert to more readable symbol
   let courseFlags      = rawCourseData[6].textContent;
+  // regex to cleanup response (removes whitespace and \n or \t and their meaning)
+  // TODO: check if string has any nonliteral \n or \t
+  courseFlags          = courseFlags.replace(/ {2,}|\\(?:n|t)|\n|\t/g, '');
   courseOutput = {
     uniqueID  : courseUniqueID,
     name      : courseName,
