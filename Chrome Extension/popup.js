@@ -11,8 +11,7 @@ function getCourseInfo() {
       // if (courses[i].uniqueID === response.uniqueID) {}
       coursesArray.push(response);
       setArrayInLocalStorage('courses', coursesArray);
-      clearPopupCourses();
-      loadPopupCourses();
+      reloadPopupCourses();
     });
   });
 }
@@ -21,7 +20,7 @@ function getCourseInfo() {
 function clearCoursesArray() {
   let coursesArray = [];
   setArrayInLocalStorage('courses', coursesArray);
-  clearPopupCourses();
+  reloadPopupCourses();
 }
 
 // local storage array func helpers
@@ -31,6 +30,39 @@ function setArrayInLocalStorage(key, array) {
 
 function getArrayInLocalStorage(key) {
     return JSON.parse(localStorage.getItem(key));
+}
+
+function reloadPopupCourses() {
+  // clear current course list
+  let popupCourses = document.getElementById('courses');
+  while (popupCourses.firstChild) {
+    popupCourses.removeChild(popupCourses.firstChild);
+  }
+
+  // load course info into popup DOM
+  if (getArrayInLocalStorage('courses')) {
+    for (let i = 0; i < getArrayInLocalStorage('courses').length; i++) {
+      let coursesArray = getArrayInLocalStorage('courses');
+
+      let listCourse = document.createElement('p');
+      listCourse.setAttribute('data-uniqueid', coursesArray[i].uniqueID);
+      listCourse.textContent = coursesArray[i].name;
+
+      let listSpan = document.createElement('div');
+      listSpan.className = 'icon-delete';
+
+      let listIcon = document.createElement('i');
+      listIcon.className = 'fa fa-pull-right fa-times fa-fw';
+
+      document.getElementById('courses').appendChild(listCourse);
+      document.getElementById('courses').childNodes[i].appendChild(listSpan);
+      document.getElementById('courses').childNodes[i].childNodes[1].appendChild(listIcon);
+
+      // REVIEW: WHY DOES THIS WORK here but not outside of it
+      // duplicative event handles (popupCourses) added here
+      document.querySelectorAll('.icon-delete')[i].addEventListener('click', deletePopupCourse);
+    }
+  }
 }
 
 // load info into Popup DOM
@@ -60,13 +92,6 @@ function loadPopupCourses() {
   }
 }
 
-function clearPopupCourses() {
-  let popupCourses = document.getElementById('courses');
-  while (popupCourses.firstChild) {
-    popupCourses.removeChild(popupCourses.firstChild);
-  }
-}
-
 // delete individual course (deletes all matching uniqueID's)
 function deletePopupCourse() {
   this.parentNode.parentNode.removeChild(this.parentNode)
@@ -80,10 +105,7 @@ function deletePopupCourse() {
     }
   }
   setArrayInLocalStorage('courses', coursesArray);
-
-  // TODO: probably easier to combine into reloadPopupCourses();
-  clearPopupCourses();
-  loadPopupCourses();
+  reloadPopupCourses();
 }
 
 // first analyze how form filler does dynamic lists
@@ -95,7 +117,7 @@ function deletePopupCourse() {
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('add-course').addEventListener('click', getCourseInfo);
   document.getElementById('clear-courses').addEventListener('click', clearCoursesArray);
-  loadPopupCourses();
+  reloadPopupCourses();
 
   // REVIEW: WTF, HOW DOES THIS NOT WORK
   // for (i = 0; i < document.querySelectorAll('.icon-delete').length; i++) {
