@@ -15,7 +15,7 @@
       "default_popup": "popup.html"
     },
     "content_scripts": [{
-        "matches": ["*://utdirect.utexas.edu/apps/registrar/course_schedule/*"],
+        "matches": ["*://utdirect.utexas.edu/apps/registrar/course_schedule/*", "<all_urls>"],
         "js": ["content.js"]
         /*"run_at": "document_idle",
         "all_frames": false*/

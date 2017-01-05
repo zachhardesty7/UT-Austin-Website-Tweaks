@@ -1,8 +1,16 @@
 chrome.runtime.onMessage.addListener(
   function(message, sender, sendResponse) {
-    if (message.type == 'getCourse') {
-      collectCourseInfo();
-      sendResponse(courseOutput);
+    switch (message.type) {
+      case 'getCourse':
+        collectCourseInfo();
+        sendResponse(courseOutput);
+        break;
+      case 'exportCourse':
+        exportCourseUniqueID(message.uniqueID);
+        sendResponse("Success");
+        break;
+      default:
+        return true;
     }
     return true;
   }
@@ -34,3 +42,9 @@ function collectCourseInfo() {
   // globally? better to just call function? make function return output?
   // and run function (add ()) after send response
 };
+
+function exportCourseUniqueID(uniqueID) {
+  console.log(uniqueID);
+  document.getElementById('ds_request_STADD').checked = true;
+  document.getElementById('s_unique_add').value = uniqueID;
+}
