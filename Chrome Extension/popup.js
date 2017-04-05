@@ -25,11 +25,11 @@ function clearCoursesArray() {
 
 // local storage array func helpers
 function setArrayInLocalStorage(key, array) {
-    localStorage.setItem(key, JSON.stringify(array));
+  localStorage.setItem(key, JSON.stringify(array));
 }
 
 function getArrayInLocalStorage(key) {
-    return JSON.parse(localStorage.getItem(key));
+  return JSON.parse(localStorage.getItem(key));
 }
 
 function reloadPopupCourses() {

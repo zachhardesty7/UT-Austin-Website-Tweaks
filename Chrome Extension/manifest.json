@@ -3,7 +3,7 @@
 
     "name": "UT Austin Website Tweaks",
     "description": "This extension helps you register for classes more easily and more coming soon(TM).",
-    "version": "0.4",
+    "version": "0.5",
 
     "background": {
         "scripts": ["background.js"],
@@ -14,11 +14,15 @@
       "default_icon": "icon.jpeg",
       "default_popup": "popup.html"
     },
-    "content_scripts": [{
+    "content_scripts": [
+    {
         "matches": ["*://utdirect.utexas.edu/apps/registrar/course_schedule/*", "<all_urls>"],
         "js": ["content.js"]
-        /*"run_at": "document_idle",
-        "all_frames": false*/
+    },
+    {
+        "matches": ["*://gchem.cm.utexas.edu/canvas.php?target=*", "*://cdn.lib.utexas.edu/chem/*"],
+        "js": ["subcontent.js"],
+        "all_frames": true
     }],
     "permissions": [
         "storage",
