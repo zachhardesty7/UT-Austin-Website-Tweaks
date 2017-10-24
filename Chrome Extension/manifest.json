@@ -3,7 +3,7 @@
 
     "name": "UT Austin Website Tweaks",
     "description": "This extension helps you register for classes more easily and more coming soon(TM).",
-    "version": "0.5",
+    "version": "0.6.0",
 
     "background": {
         "scripts": ["background.js"],
@@ -16,22 +16,35 @@
     },
     "content_scripts": [
     {
-        "matches": ["*://utdirect.utexas.edu/apps/registrar/course_schedule/*", "<all_urls>"],
-        "js": ["content.js"]
+      "matches": ["*://utdirect.utexas.edu/apps/registrar/course_schedule/*", "<all_urls>"],
+      "js": ["content.js"]
     },
     {
-        "matches": ["*://gchem.cm.utexas.edu/canvas.php?target=*", "*://cdn.lib.utexas.edu/chem/*"],
-        "js": ["subcontent.js"],
-        "all_frames": true
+      "matches": ["*://gchem.cm.utexas.edu/canvas.php?target=*", "*://cdn.lib.utexas.edu/chem/*"],
+      "js": ["content-canvas.js"],
+      "all_frames": true
+    },
+    {
+      "matches": ["*://quest.cns.utexas.edu/*"],
+      "js": ["content-quest.js"]
     }],
     "permissions": [
-        "storage",
-        "activeTab",
-        "tabs",
-        "clipboardRead",
-        "clipboardWrite",
-        "*://*/",
-        "<all_urls>"
+      "identity",
+      "background",
+      "storage",
+      "activeTab",
+      "tabs",
+      "clipboardRead",
+      "clipboardWrite",
+      "*://*/",
+      "<all_urls>"
     ],
-    "content_security_policy": "script-src 'self' https://use.fontawesome.com/0ef0ae1559.js; object-src 'self'"
+    "oauth2": {
+      "client_id": "867938200097-gen69ht2f7i9e16r5g6is3nbei19rtba.apps.googleusercontent.com",
+      "scopes": [
+        "https://www.googleapis.com/auth/calendar.readonly"
+      ]
+    },
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAteSJSYJWEc9xs8yIgRCQSI/KaA8jPL1qQVC6FQGZOnqLTSjjnDbN4ywC2X4qjzuGFiK9c+qKcZxjpVNhZtNiL5cWMWpYlzuOWERylraQE5O0pEwoNJHXN0V0Wzm2hozuEKalWtWEg7bNJplTaKg1Qa72XG0+Dhpu47oblVSadsJ5UNRDjeoL8jTDsirFxgtEcG4hcaBqaxum7k0xOny9SXY5jQLXwW7RrSR9BJX+mUS7p7GXPsOIhKwtq8uy913EoHkSkgeS8V9hxujn+oAY/p9E53zKhvgeDWwPMx2X54PUrLl/2QYdCF3fEkL08Qmhv7SFg/14wHC61qa2n4dJXQIDAQAB",
+    "content_security_policy": "script-src 'self' https://ajax.googleapis.com https://maxcdn.bootstrapcdn.com/; object-src 'self'"
 }

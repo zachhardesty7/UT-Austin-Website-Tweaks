@@ -3,14 +3,10 @@
 <head>
   <title>UT Austin Website Tweaks</title>
   <style>
-    body {
-      font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-      font-size: 100%;
-    }
     .title {
       white-space: nowrap;
     }
-    button {
+    .button0 {
       display: flex;
       margin: 10px auto;
       padding: 5px;
@@ -32,18 +28,59 @@
       float: right;
     }
   </style>
-  <script type="text/javascript" src="popup.js"></script>
-  <script src="https://use.fontawesome.com/0ef0ae1559.js"></script>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 </head>
-<body>
-  <p class="title">UT Austin Website Tweaks</p>
-  <div id="panes">
-    <div class="buttons">
-      <button id="add-course">Add Current Class</button>
-      <button id="clear-courses">Clear All Classes</button>
+<body class='grey lighten-4' style='width:700px; height:530px'>
+  <nav class="nav-extended">
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" style='margin: auto;'>
+        <div class="brand-logo">UT Austin Web Tweaks</div>
+        <!-- <li class="active"><a href="#!">Course List</a></li>
+        <li><a href="#!">Current Schedule</a></li>
+        <li><a href="#!">Schedule Creater</a></li> -->
+      </ul>
     </div>
-    <div id="courses"></div>
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a href="#test1">Course List</a></li>
+        <li class="tab"><a class="active" href="#test2">Test 2</a></li>
+        <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
+        <li class="tab"><a href="#test4">Test 4</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <!-- <h5 class="title">UT Austin Website Tweaks</h5> -->
+    <div id="panes">
+      <div class="buttons row">
+        <button id="add-course" class="waves-effect waves-light btn col s6">Add Current Class</button>
+        <button id="clear-courses" class="waves-effect waves-light btn col s6">Clear All Classes</button>
+      </div>
+      <div class="buttons row">
+        <button id="exportToGCal" class="waves-effect waves-light btn col s6">Export Calendar to GCal</button>
+        <button id="exportToCSV" class="waves-effect waves-light btn col s6">Export Calendar to .CSV</button>
+      </div>
+      <pre id="content"></pre>
+      <button id="authorize-button" style="display: none;">Authorize</button>
+      <button id="signout-button" style="display: none;">Sign Out</button>
+      <div id="courses">
+        <ul class="collection with-header">
+          <li class="collection-header"><h6>Added Courses</h6></li>
+        </ul>
+      </div>
+    </div>
   </div>
+
+  <script type="text/javascript" src="popup.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()">
+  </script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <!-- <script src="https://use.fontawesome.com/0ef0ae1559.js"></script> -->
 </body>
 
 </html>
