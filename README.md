@@ -9,6 +9,8 @@ This repository serves to host a Google Chrome extension that facilitates the re
 
 ### Change Log
 
+- 0.6.1 git restructure
+
 - 0.6.0 major refactoring 2
 
 	- hide annoying quest modal
