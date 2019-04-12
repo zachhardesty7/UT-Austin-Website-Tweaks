@@ -1,4 +1,10 @@
-# UT-Austin-Website-Tweaks
+# UT-Austin-Website-Tweaks [Archived]
+
+**Most of the tweaks in this repo should have been written as content scripts for
+[TamperMonkey](https://tampermonkey.net/) and the actual application never passed the POC stage.
+Learning about Chrome extension development was fun but the following extension is better and serves
+a similar purpose: [UT Registration Plus](https://github.com/sghsri/UT-Registration-Plus). Visit my
+[website](https://zachhardesty.com), [blog](https://zachhardesty.com/blog), or [LinkedIn](https://www.linkedin.com/in/zachhardesty7/) to stay up to date with my recent development.**
 
 ---
 
